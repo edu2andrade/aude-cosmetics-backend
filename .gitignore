@@ -1,0 +1,10 @@
+# General
+node_modules
+dist
+
+# iOS
+.DS_Store
+
+# env
+.env
+.env.*
