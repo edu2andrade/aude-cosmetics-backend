@@ -1,0 +1,15 @@
+services:
+    db:
+        image: postgres:17-alpine
+        # @important: the container name can't contain '-'!
+        container_name: audedb_dev
+        env_file:
+            - ../env/.env.dev
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+        ports:
+            - ${POSTGRES_DB_PORT}:${POSTGRES_DB_PORT}
+        volumes:
+            - ./volumes/pgdata:/var/lib/postgresql/data

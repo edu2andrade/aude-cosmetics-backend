@@ -1,47 +1,30 @@
-# Basic Express Setup
+# Aude Cosmetics Backend
 
-This is a basic Express.js setup with TypeScript.
+The Aude Cosmetics Backend is an API for a e-commerce platform focused on cosmetics, managing user authentication, orders, shipping, payments and inventory.
+
+**🚧 Under Development 🚧**
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Design Principles](#design-principles)
+- [Architecture](#architecture)
+- [Technology Stack](#technology-stack)
 
-## Installation
+## Design Principles
 
-```bash
-pnpm install
-```
+- **API First**: The API is the single source of truth for the application's data.
+- **Test-Driven Development**: All code is tested using Jest and TypeScript type checking is enforced.
+- **Continuous Integration and Continuous Deployment**: The application is built and deployed using Docker.
 
-## Running the Application
+## Architecture
 
-```bash
-pnpm run start:dev
-```
+This application follows principles of Clean Architecture and Domain-Driven Design, with a focus on modularity and testability.
 
-## Project Structure
+## Technology Stack
 
-```
-.
-├── .husky
-├── src
-│   └── index.ts
-├── tests
-│   └── index.test.ts
-├── .gitignore
-├── .prettierrc
-├── eslint.config.ts
-├── jest.config.ts
-├── package.json
-├── pnpm-lock.yaml
-├── pnpm-workspace.yaml
-├── README.md
-└── tsconfig.json
-```
-
-## License
-
-MIT
+- **Node.js**: The server-side runtime environment.
+- **Express.js**: The web framework used to build the API.
+- **TypeScript**: The programming language used for development.
+- **PostgreSQL**: The relational database management system.
+- **Prisma**: The ORM used to interact with PostgreSQL.
+- **Stripe**: The payment gateway used for payment processing.
