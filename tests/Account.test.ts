@@ -7,7 +7,7 @@ describe('Account', () => {
         expect(account.accountId).toBeDefined();
         expect(account.username.value).toBe('username');
         expect(account.email.value).toBe('user@example.com');
-        expect(account.hashedPassword!.value).toBeDefined();
+        expect(account.hashedPassword).toBeDefined();
         expect(account.role).toBe(Role.CLIENT);
     });
 });

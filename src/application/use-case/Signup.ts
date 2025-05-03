@@ -7,8 +7,8 @@ export default class SignUp {
     async execute(input: Input): Promise<Output> {
         if (!input.email || !input.password || !input.confirmPassword) throw new Error('Missing required fields');
         if (input.password !== input.confirmPassword) throw new Error('Passwords do not match');
-        const existingAccount = await this.accountRepository.findByEmail(input.email);
-        if (existingAccount) throw new Error('Email is already taken');
+        const existingEmail = await this.accountRepository.findByEmail(input.email);
+        if (existingEmail) throw new Error('Email is already taken');
         const existingUsername = await this.accountRepository.findByUsername(input.username);
         if (existingUsername) throw new Error('Username is already taken');
 

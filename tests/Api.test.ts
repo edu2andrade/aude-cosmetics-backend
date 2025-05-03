@@ -1,13 +1,23 @@
+import DatabaseConnection from '@/infra/database/DatabaseConnection';
+import PgPromiseAdapter from '@/infra/database/PgPromiseAdapter';
 import AccountRepositoryDatabase from '@/infra/repository/AccountRepositoryDatabase';
 import { Role } from '@/domain/Account';
 
 describe('Signup', () => {
-    const accountRepository = new AccountRepositoryDatabase();
+    let databaseConnection: DatabaseConnection;
+    let accountRepository: AccountRepositoryDatabase;
+
+    beforeEach(() => {
+        databaseConnection = new PgPromiseAdapter();
+        accountRepository = new AccountRepositoryDatabase(databaseConnection);
+    });
 
     afterEach(async () => {
         const existingAccount = await accountRepository.findByEmail('user@example.com');
         if (existingAccount) await accountRepository.delete(existingAccount.accountId);
+        await databaseConnection.close();
     });
+
     test('Should signup a new user', async () => {
         const input = {
             email: 'user@example.com',

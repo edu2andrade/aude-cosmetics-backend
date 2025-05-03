@@ -6,13 +6,10 @@
     "keywords": [],
     "author": "Eduardo Andrade <eduardo@audecosmetics.com>",
     "license": "ISC",
-    "packageManager": "pnpm@10.8.1",
+    "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
     "type": "module",
     "engines": {
         "node": "22.14.0"
-    },
-    "prisma": {
-        "schema": "src/infra/database/schema.prisma"
     },
     "scripts": {
         "build": "tsc",
@@ -26,8 +23,8 @@
         "test:cov": "env-cmd -f env/.env.dev jest --coverage",
         "docker:run:dev": "docker compose --env-file env/.env.dev -f docker/docker-compose-dev.yml up --build -d",
         "docker:stop:dev": "docker compose --env-file env/.env.dev -f docker/docker-compose-dev.yml down",
-        "db:migrate:dev": "env-cmd -f env/.env.dev pnpm dlx prisma migrate dev",
-        "db:migrate:reset:dev": "env-cmd -f env/.env.dev pnpm dlx prisma migrate reset",
+        "docker:clean": "rm -rf docker/volumes/pgdata",
+        "docker:reset:db:dev": "docker exec -i audedb_dev psql -U andradee -d audedb < create.sql",
         "prepare": "husky"
     },
     "devDependencies": {
@@ -41,7 +38,6 @@
         "husky": "^9.1.7",
         "jest": "^29.7.0",
         "prettier": "^3.5.3",
-        "prisma": "^6.6.0",
         "ts-jest": "^29.3.2",
         "ts-node": "^10.9.2",
         "tsx": "^4.19.3",
@@ -49,9 +45,9 @@
         "typescript-eslint": "^8.30.1"
     },
     "dependencies": {
-        "@prisma/client": "^6.6.0",
         "cors": "^2.8.5",
         "env-cmd": "^10.1.0",
-        "express": "^5.1.0"
+        "express": "^5.1.0",
+        "pg-promise": "^11.13.0"
     }
 }

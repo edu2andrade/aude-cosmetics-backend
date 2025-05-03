@@ -9,13 +9,13 @@ export default class Account {
         readonly accountId: string,
         readonly username: Username,
         readonly email: Email,
-        readonly hashedPassword?: Password,
+        readonly hashedPassword?: string,
         readonly role?: Role
     ) {}
 
     static create(username: string, email: string, password: string, role: Role = Role.CLIENT) {
         const accountId = crypto.randomUUID();
-        return new Account(accountId, new Username(username), new Email(email), new Password(password), role);
+        return new Account(accountId, new Username(username), new Email(email), new Password(password).getHashedValue(), role);
     }
 
     static restore(accountId: string, username: string, email: string, role: Role) {
