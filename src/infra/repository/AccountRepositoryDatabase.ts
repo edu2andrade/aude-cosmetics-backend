@@ -14,9 +14,9 @@ export default class AccountRepositoryDatabase implements AccountRepository {
         await this.prisma.user.create({
             data: {
                 id: account.accountId,
-                username: account.username,
-                email: account.email,
-                password: account.hashedPassword!,
+                username: account.username.value,
+                email: account.email.value,
+                password: account.hashedPassword!.value,
                 role: account.role,
             },
         });

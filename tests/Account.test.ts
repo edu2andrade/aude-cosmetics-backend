@@ -5,9 +5,9 @@ describe('Account', () => {
         const account = Account.create('username', 'user@example.com', 'Test@1234');
 
         expect(account.accountId).toBeDefined();
-        expect(account.username).toBe('username');
-        expect(account.email).toBe('user@example.com');
-        expect(account.hashedPassword).toBeDefined();
+        expect(account.username.value).toBe('username');
+        expect(account.email.value).toBe('user@example.com');
+        expect(account.hashedPassword!.value).toBeDefined();
         expect(account.role).toBe(Role.CLIENT);
     });
 });
